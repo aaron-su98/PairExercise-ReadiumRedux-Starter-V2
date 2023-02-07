@@ -1,7 +1,8 @@
 import React, {useEffect} from "react";
-import { Navbar, StoriesList } from "./";
+import { Navbar, SingleStory, StoriesList } from "./";
 import { fetchStoriesAsync } from "../features/stories/storiesSlice";
 import { useDispatch } from "react-redux";
+import { Route, Routes } from "react-router-dom";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -18,7 +19,10 @@ const App = () => {
         </div>
         <Navbar />
       </div>
-      <StoriesList />
+      <Routes>
+        <Route path="/stories" element={<StoriesList />} />
+        <Route path="/stories/:storyId" element={<SingleStory />}/>
+      </Routes>
     </div>
   );
 };
